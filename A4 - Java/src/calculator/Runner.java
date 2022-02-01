@@ -1,3 +1,6 @@
+/**
+ * @author Tomas Ruiters and Edwin Asselman.
+ */
 package calculator;
 
 import java.awt.FlowLayout;
