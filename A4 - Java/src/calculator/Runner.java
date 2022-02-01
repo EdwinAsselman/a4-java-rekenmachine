@@ -1,5 +1,5 @@
 /**
- * @author Tomas Ruiters and Edwin Asselman.
+ * @author Tomas Ruiters and Edwin Asselman
  */
 package calculator;
 
