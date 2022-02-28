@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 import Controllers.Controller;
 import View.View;
@@ -10,17 +9,21 @@ public class Runner {
     public static void main(String[] args) {
         //Maak View object
         View frame = new View();
-        //new controller object voeg toe aan View
-        frame.setController(new Controller(frame));
+        //maak Controller object
+        Controller controller = new Controller();
+        //geef controller object aan method setController in View
+        frame.setController(controller);
 
-        // afsluiten op EXIT
+        // Standaard Setting voor JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // zetten van lengte en breedte
-        frame.setSize(900, 700);
-        // zet frame midden in scherm
+        // Zetten van lengte en breedte
+        frame.setSize(250, 300);
+        // Zet frame midden in scherm
         frame.setLocationRelativeTo(null);
+        // Zet title
         frame.setTitle("Calculator");
-        //Zet JPanel zichtbaar
+        // Zet JPanel zichtbaar
         frame.setVisible(true);
+
     }
 }
