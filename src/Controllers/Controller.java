@@ -5,27 +5,25 @@ import View.View;
 
 import java.beans.PropertyChangeSupport;
 
-
-//Controller class
 public class Controller {
-    //properties
+	
+    // properties
     private Model model;
-
     public String s0, s1, s2;
 
     PropertyChangeSupport pcs;
 
-    //constructor method
     public Controller() {
-        //new PropertyChangeSupport object maken van de postbode
+        // Nieuwe PropertyChangeSupport object maken van de postbode
         pcs = new PropertyChangeSupport(this);
-        //maak string leeg
+        
         s0 = s1 = s2 = "";
-        //new model object
+        
+        // Nieuwe model object
         model = new Model();
     }
 
-    //methode krijgt argument uit View binnen
+    // Methode krijgt argument uit View binnen
     public void addClickText(String text) {
         //Text uit View
         System.out.println("text " + text.charAt(0));
@@ -34,10 +32,10 @@ public class Controller {
             //als het niet leeg is
             if (!s1.equals("")) {
                 //stop text in String s2
-                s2 = s2 + text;
+                s2 = text;
             } else {
                 //stop text in String s0
-                s0 = s0 + text;
+                s0 = text;
                 System.out.println("waardes " + s0 + s1 + s2);
             }
 
