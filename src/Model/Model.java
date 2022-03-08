@@ -1,21 +1,16 @@
 package Model;
 
-import Controllers.Controller;
-
 //Model class does the calculations
 public class Model {
-    //props
+    // props
     private Double calculationValue;
 
-    //    public Model() {
-//
-//    }
-
-    //kijken welke operatie moet worden uitgevoerd
+    // Kijken welke operatie moet worden uitgevoerd.
     public void calculate(String first, String second, String operation) {
-        //maak Double van String eerste en tweede symbool
+        // Maak Double van String eerste en tweede symbool.
         Double s0 = Double.parseDouble(first);
         Double s2 = Double.parseDouble(second);
+
         switch (operation.charAt(0)) {
             case '+':
                 this.addNums(s0, s2);
@@ -32,10 +27,8 @@ public class Model {
         }
     }
 
-    //Methods
-    public void addNums(double firstNumber, double secondNumber) {
-        calculationValue = firstNumber + secondNumber;
-    }
+    // methodes
+    public void addNums(double firstNumber, double secondNumber) { calculationValue = firstNumber + secondNumber; }
 
     public void minusNums(double firstNumber, double secondNumber) {
         calculationValue = firstNumber - secondNumber;
@@ -49,7 +42,7 @@ public class Model {
         calculationValue = firstNumber / secondNumber;
     }
 
-    //getter method
+    // Getter methode.
     public double getCalculationValue() {
 
         return calculationValue;
