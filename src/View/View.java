@@ -10,55 +10,58 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class View extends JFrame implements PropertyChangeListener {
-    //props and attributes
-    public JTextField oplossingSom;
+    // Props and attributes.
+    public JTextField som;
     public JButton knopText;
     public JPanel panel;
     public JPanel knopPanel;
-    //dubbele String array met symbolen
-    public static final String[][] buttonText = {
+
+    private Controller controller;
+
+    // Het uiterlijk van de rekenmachine.
+    public static final String[][] calculator = {
             {"1", "2", "3", "+"},
             {"4", "5", "6", "-"},
             {"7", "8", "9", "*"},
             {"0", ".", "/", "C", "="}
     };
 
-    //define controller zodat wij method kunnen aanroepen met object
-    private Controller controller;
-
-
-    //constructor method
+    // constructor
     public View() {
-        //Maken van de JPanel Object
+        //Maken van de JPanel Object.
         panel = new JPanel();
         this.add(panel);
 
-        oplossingSom = new JTextField(20);
-        oplossingSom.setBounds(500, 100, 120, 120);
-        oplossingSom.setEditable(false);
-        panel.add(oplossingSom);
-        //extra JPanel voor de buttons
+        som = new JTextField(20);
+        som.setBounds(500, 100, 120, 120);
+        som.setEditable(false);
+        panel.add(som);
+
+        // Extra JPanel voor de knoppen.
         knopPanel = new JPanel(new GridLayout(4, 5));
         panel.add(knopPanel);
 
-        //printen jbuttons met text symbolen
-        for (int i = 0; i < buttonText.length; i++) {
+        // Printen jbuttons met text symbolen.
+        for (int i = 0; i < calculator.length; i++) {
             for (int j = 0; j < 5; j++) {
-                //maken JButton objecten en vul met waarde
-                if (j == buttonText[i].length) {
+                // Maken JButton objecten en vul met waarde.
+                if (j == calculator[i].length) {
                     knopPanel.add(new JLabel());
                 } else {
-                    //maak nieuw JButton object en stop text in de jbuttons
-                    knopText = new JButton(buttonText[i][j]);
-                    //voegen jbuttons aan JPanel
+                    // Maak nieuw JButton object en stop text in de jbuttons.
+                    knopText = new JButton(calculator[i][j]);
+
+                    // Voegen jbuttons aan JPanel.
                     knopPanel.add(knopText);
-                    //voeg ActionListener aan knop objecten
+
+                    // Voeg ActionListener aan knop objecten.
                     knopText.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            //Get text uit button
+                            // Get text uit button.
                             knopText = (JButton) e.getSource();
-                            //stuur text naar controller method
+
+                            // Stuur text naar controller method.
                             controller.addClickText(knopText.getText());
                         }
                     });
@@ -76,13 +79,12 @@ public class View extends JFrame implements PropertyChangeListener {
 
     //method die de String in de jtextfield zet
     public void setTextView(String totaal) {
-        oplossingSom.setText(totaal);
+        som.setText(totaal);
     }
 
     //Dit is de brievenbus hier komt de post binnen dat gestuurd is door de Controller
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("Brievenbus: " + evt.getPropertyName() + "=" + evt.getNewValue());
         //kijken welke post je hebt gekregen een result of een totaal som
         if (evt.getPropertyName().equals("result")) {
             //geef resultaat aan de setTextView method
