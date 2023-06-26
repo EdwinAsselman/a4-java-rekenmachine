@@ -10,6 +10,7 @@ import View.View;
 public class Runner {
     public static void main(String[] args) {
         // Maak View object.
+
         View frame = new View();
 
         // Maak Controller object.
